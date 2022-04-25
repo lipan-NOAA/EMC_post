@@ -26,6 +26,9 @@
 !                        CHANGES TO AVOID RELAXATION FOR ABOVE G GIBSING
 !                        ARE COMMENTED OUT FOR NOW
 !   19-10-30  Bo CUI - REMOVE "GOTO" STATEMENT
+!   21-07-26  W  Meng - Restrict computation from undefined grids
+!   21-09-25  W Meng - Further modification for restricting computation 
+!                      from undefined grids.
 !
 ! USAGE:  CALL SLPSIG FROM SUBROUITNE ETA2P
 !
@@ -108,7 +111,7 @@
           TNEW(I,J)  = spval
 
 
-          LMHO(I,J) = 0
+          LMHO(I,J) = LSM
           DONE(I,J) = .FALSE.
         ENDDO
       ENDDO
@@ -126,6 +129,7 @@
         DO J=JSTA,JEND
           DO I=1,IM
 
+           HTMO(I,J,L)=1.
            if(PSLP(I,J)<spval) then
 
             PSFC = PSLP(I,J)
@@ -238,10 +242,10 @@
           DO I=1,IM
 ! dong
 !            if (QPRES(I,J,LSM) < spval) then 
-           if(PSLP(I,J)<spval) then
+           !if(PSLP(I,J)<spval) then
             TTV(I,J)   = TPRES(I,J,L)
             HTM2D(I,J) = HTMO(I,J,L)
-           end if ! spval if
+           !end if ! spval if
 !            end if ! spval if
 !     IF(TTV(I,J)<150. .and. TTV(I,J)>325.0)print*                &  
 !       ,'abnormal IC for T relaxation',i,j,TTV(I,J)

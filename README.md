@@ -44,6 +44,8 @@ Examples of UPP products include:
 Support for the UFS UPP is provided through the UFS Forum by the
 Developmental Testbed Center (DTC) for FV3-based applications.
 
+For full documentation see https://noaa-emc.github.io/UPP/.
+
 The UPP uses some of the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS)
 project. 
 
@@ -108,9 +110,9 @@ Builds include:
 ```
 mkdir build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/install 
-make 
-make test
+cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/install
+(or cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/install -DEMC_EXEC_DIR=ON)
+make -j 4
 make install
 ```
 
